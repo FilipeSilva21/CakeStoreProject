@@ -1,10 +1,10 @@
-package com.CakeStore.models;
+package com.CakeStore.models.enums;
 
 public enum CakeType {
 
     confeitado,
     simples,
-    reduzido,
+    dePote,
     gourmet
 
 }
