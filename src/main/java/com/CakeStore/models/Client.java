@@ -7,7 +7,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "tbClients")
@@ -25,10 +28,8 @@ public class Client {
     private String name;
 
     @Column(name = "birthday")
-    private Date birthday;
+    private LocalDate birthday;
 
-    @ManyToOne
-    @JoinColumn(name = "cakeId")
-    @JsonIgnoreProperties("cakes")
-    private Cake cakesBought;
+    @OneToMany(mappedBy = "buyer")
+    public List<Cake> cakes = new ArrayList<>();
 }

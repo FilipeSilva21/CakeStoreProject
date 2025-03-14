@@ -2,6 +2,9 @@ package com.CakeStore.DTOs;
 
 import com.CakeStore.models.Client;
 import com.CakeStore.models.enums.CakeType;
+import org.springframework.cglib.core.Local;
 
-public record CreateCakeDTO(CakeType cakeType, Client buyer, int saleDate) {
+import java.time.LocalDate;
+
+public record CreateCakeDTO(CakeType cakeType, Client buyer, LocalDate saleDate) {
 }

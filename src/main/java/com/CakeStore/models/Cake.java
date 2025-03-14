@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -29,13 +30,13 @@ public class Cake {
     private CakeType cakeType;
 
     @Column(name = "validateDate")
-    private int validateDate;
+    private LocalDate validateDate;
 
     @Column(name = "saleDate")
-    private int saleDate;
+    private LocalDate saleDate;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "clientId")
     @JsonIgnoreProperties("cakes")
-    private Client buyer;
+    public Client buyer;
 }

@@ -2,6 +2,7 @@ package com.CakeStore.services;
 
 import com.CakeStore.DTOs.CreateCakeDTO;
 import com.CakeStore.models.Cake;
+import com.CakeStore.models.Client;
 import com.CakeStore.models.enums.CakeType;
 import com.CakeStore.repositories.CakeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,22 +17,22 @@ public class CakeService {
     @Autowired
     private CakeRepository cakeRepository;
 
-    public Long createCake (Cake cake, CreateCakeDTO createCakeDTO){
+    public Long createCake (Cake cake, CreateCakeDTO createCakeDTO, Client buyer){
 
         if (cake.getCakeType() == CakeType.confeitado) {
-            cake.setValidateDate(cake.getSaleDate() + 2);
+            cake.setValidateDate(cake.getValidateDate().plusDays(2));
         }
 
         if (cake.getCakeType() == CakeType.dePote) {
-            cake.setValidateDate(cake.getSaleDate() + 30);
+            cake.setValidateDate(cake.getValidateDate().plusDays(30));
         }
 
         if (cake.getCakeType() == CakeType.gourmet) {
-            cake.setValidateDate(cake.getSaleDate() + 10);
+            cake.setValidateDate(cake.getValidateDate().plusDays(10));
         }
 
         if (cake.getCakeType() == CakeType.simples) {
-            cake.setValidateDate(cake.getSaleDate() + 6);
+            cake.setValidateDate(cake.getValidateDate().plusDays(6));
         }
 
         var cakes = new Cake(
@@ -39,7 +40,7 @@ public class CakeService {
               createCakeDTO.cakeType(),
               cake.getValidateDate(),
               createCakeDTO.saleDate(),
-              createCakeDTO.buyer()
+              buyer
         );
 
         var cakeMade = cakeRepository.save(cakes);
