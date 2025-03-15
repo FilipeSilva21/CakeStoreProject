@@ -30,6 +30,6 @@ public class Client {
     @Column(name = "birthday")
     private LocalDate birthday;
 
-    @OneToMany(mappedBy = "buyer")
+    @OneToMany(mappedBy = "clientId")
     public List<Cake> cakes = new ArrayList<>();
 }

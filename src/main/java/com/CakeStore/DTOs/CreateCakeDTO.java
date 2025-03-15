@@ -6,5 +6,5 @@ import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 
-public record CreateCakeDTO(CakeType cakeType, Client buyer, LocalDate saleDate) {
+public record CreateCakeDTO(CakeType cakeType, LocalDate saleDate) {
 }

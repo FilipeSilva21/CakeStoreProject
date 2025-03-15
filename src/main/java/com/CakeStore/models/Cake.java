@@ -1,6 +1,7 @@
 package com.CakeStore.models;
 
 import com.CakeStore.models.enums.CakeType;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
@@ -30,13 +31,15 @@ public class Cake {
     private CakeType cakeType;
 
     @Column(name = "validateDate")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate validateDate;
 
     @Column(name = "saleDate")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate saleDate;
 
     @ManyToOne
     @JoinColumn(name = "clientId")
     @JsonIgnoreProperties("cakes")
-    public Client buyer;
+    public Client clientId;
 }
