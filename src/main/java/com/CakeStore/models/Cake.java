@@ -1,8 +1,8 @@
 package com.CakeStore.models;
 
 import com.CakeStore.models.enums.CakeType;
+import com.CakeStore.models.enums.PaymentMethod;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name = "tbCakes")
@@ -37,6 +36,10 @@ public class Cake {
     @Column(name = "saleDate")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate saleDate;
+
+    @Column(name = "paymentMethod")
+    @Enumerated(EnumType.STRING)
+    private PaymentMethod paymentMethod;
 
     @ManyToOne
     @JoinColumn(name = "clientId")

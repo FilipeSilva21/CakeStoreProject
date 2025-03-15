@@ -1,5 +1,6 @@
 package com.CakeStore.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -28,6 +29,7 @@ public class Client {
     private String name;
 
     @Column(name = "birthday")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate birthday;
 
     @OneToMany(mappedBy = "clientId")

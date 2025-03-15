@@ -34,6 +34,7 @@ public class CakeService {
                 createCakeDTO.cakeType(),
                 validateDate,
                 createCakeDTO.saleDate(),
+                createCakeDTO.paymentMethod(),
                 clientId
         );
 
